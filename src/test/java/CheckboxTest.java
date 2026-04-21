@@ -55,6 +55,5 @@ checked, сделать unheck, проверить, что он unchecked
         //закрывает браузер
         driver.quit();
         softAsser.assertAll();
-
     }
 }

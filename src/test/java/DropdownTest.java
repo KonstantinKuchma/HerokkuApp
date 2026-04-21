@@ -25,7 +25,7 @@ public class DropdownTest {
         // определяем браузер с которым хоти работать
         WebDriver driver = new ChromeDriver(options);
         //объявляем софт ассерт, чтоб ы моно было делать несколько проверок
-        SoftAssert softAsser = new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         //открывает страницу по указанному урлу
         driver.get("https://the-internet.herokuapp.com/dropdown");
@@ -33,33 +33,33 @@ public class DropdownTest {
         Select select = new Select(driver.findElement(By.id("dropdown")));
 
         // проверяем наличие и текст каждой опции напрямую по индексу
-        softAsser.assertEquals(
+        softAssert.assertEquals(
                 select.getOptions().get(0).getText(),
                 "Please select an option"
         );
-        softAsser.assertEquals(
+        softAssert.assertEquals(
                 select.getOptions().get(1).getText(),
                 "Option 1"
         );
-        softAsser.assertEquals(
+        softAssert.assertEquals(
                 select.getOptions().get(2).getText(),
                 "Option 2"
         );
 
         // проверяем возможность выбора опций
         select.selectByVisibleText("Option 1");
-        softAsser.assertEquals(
+        softAssert.assertEquals(
                 select.getFirstSelectedOption().getText(),
                 "Option 1"
         );
 
         select.selectByVisibleText("Option 2");
-        softAsser.assertEquals(
+        softAssert.assertEquals(
                 select.getFirstSelectedOption().getText(),
                 "Option 2"
         );
         //закрывает браузер
         driver.quit();
-        softAsser.assertAll();
+        softAssert.assertAll();
     }
 }
